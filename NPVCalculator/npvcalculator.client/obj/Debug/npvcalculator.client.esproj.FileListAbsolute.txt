@@ -1,0 +1,2 @@
+C:\Users\Edu\projects\GTreasury\NPVCalculator\npvcalculator.client\obj\Debug\npvcalculator.client.esproj.CoreCompileInputs.cache
+C:\Users\Edu\projects\GTreasury\npv-calculator\NPVCalculator\npvcalculator.client\obj\Debug\npvcalculator.client.esproj.CoreCompileInputs.cache

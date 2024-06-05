@@ -1,0 +1,45 @@
+<div *ngIf="npvWithCashFlowResult">
+    <h2>NPV Result</h2>
+    <h3>Calculated NPV: {{ npvWithCashFlowResult.calculatedNPV }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Cash Flow</th>
+          <th>Present Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let series of npvWithCashFlowResult.cashFlowSeries">
+          <td>{{ series.period }}</td>
+          <td>{{ series.cashFlow }}</td>
+          <td>{{ series.presentValue }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="npvRangeResult">
+    <h3>NPV Range with Cash Flow Stream</h3>
+    <div *ngFor="let result of npvRangeResult">
+      <h4>Rate: {{ result.rate }}</h4>
+      <h3>Calculated NPV: {{ result.calculatedNPV }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Cash Flow</th>
+            <th>Present Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let series of result.cashFlowSeries">
+            <td>{{ series.period }}</td>
+            <td>{{ series.cashFlow }}</td>
+            <td>{{ series.presentValue }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

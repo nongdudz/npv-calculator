@@ -1,0 +1,46 @@
+<div>
+  <h1>Net Present Value Calculator</h1>
+</div>
+<div class="form-container">
+  <form [formGroup]="npvForm" (ngSubmit)="calculateNPVWithCashFlowStream()">
+    <div class="form-group">
+      <label for="initialInvestments">Initial Investments</label>
+      <input id="initialInvestments" formControlName="initialInvestments" type="number" required>
+    </div>
+    <div class="form-group">
+      <label for="interestRate">Interest Rate</label>
+      <input id="interestRate" formControlName="interestRate" type="number" required>
+    </div>
+    
+    <div formArrayName="cashFlows">
+      <div *ngFor="let cashFlow of cashFlows.controls; let i = index" class="form-group flex-container">
+        <label for="cashFlow-{{ i }}">Cash Flow {{ i + 1 }}</label>
+        <input id="cashFlow-{{ i }}" [formControlName]="i" type="number">
+        <button type="button" (click)="removeCashFlow(i)" class="remove-btn">Remove</button>
+      </div>
+    </div>
+    <button type="button" (click)="addCashFlow()" class="add-btn">Add Cash Flow</button>
+
+    <fieldset formGroupName="discountRateRange">
+      <legend>Discount Rate Range (optional)</legend>
+      <div class="form-group">
+        <label for="lowerDiscountRate">Lower Discount Rate</label>
+        <input id="lowerDiscountRate" formControlName="lowerDiscountRate" type="number">
+      </div>
+      <div class="form-group">
+        <label for="upperDiscountRate">Upper Discount Rate</label>
+        <input id="upperDiscountRate" formControlName="upperDiscountRate" type="number">
+      </div>
+      <div class="form-group">
+        <label for="discountRateIncrement">Discount Rate Increment</label>
+        <input id="discountRateIncrement" formControlName="discountRateIncrement" type="number">
+      </div>
+    </fieldset>
+    <button type="submit" class="submit-btn">Calculate NPV with Cash Flow Stream</button>
+    <button class="submit-btn" (click)="calculateNPVRangeWithCashFlowStream()">Calculate NPV Range with Cash Flow
+      Stream</button>
+  </form>
+  <app-npv-cash-flow-result [npvWithCashFlowResult]="npvWithCashFlowResult$ | async"
+    [npvRangeResult]="npvRangeResult$ | async">
+  </app-npv-cash-flow-result>
+</div>
