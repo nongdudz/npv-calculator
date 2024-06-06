@@ -42,9 +42,9 @@ export class NpvCalculatorComponent {
     );
   }
 
-  // get cashFlows() {
-  //   return this.npvForm.get('cashFlows') as FormArray;
-  // }
+  get cashFlows() {
+    return this.npvForm.get('cashFlows') as FormArray;
+  }
 
   addCashFlow() {
     this.cashFlows.push(this.fb.control(0));
